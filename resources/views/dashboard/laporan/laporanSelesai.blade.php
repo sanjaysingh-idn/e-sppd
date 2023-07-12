@@ -17,9 +17,10 @@
                             <th>No</th>
                             <th>Kode</th>
                             <th>Maksud</th>
-                            <th>Alasan Ditolak</th>
                             <th>Tujuan</th>
                             <th>Tanggal</th>
+                            <th>Total Biaya</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -37,9 +38,6 @@
                             <td>
                                 {{ $item->maksud }}
                             </td>
-                            <td>
-                                {{ $item->keterangan }}
-                            </td>
                             <td class="text-nowrap">
                                 <br>
                                 Kabupaten : <strong>{{ $item->r_provinsi->nama_provinsi }}</strong>
@@ -50,6 +48,12 @@
                                 {{ date('d M Y', strtotime($item->tanggal_mulai)) }}
                                 -
                                 {{ date('d M Y', strtotime($item->tanggal_pulang)) }}
+                            </td>
+                            <td>
+                                <span class="fw-bold">Rp. {{ number_format($totalBiaya) }}</span>
+                            </td>
+                            <td>
+                                <span class="badge bg-success rounded-pill text-bg-success"><i class="bx bx-check"></i>{{ $item->status_spd }}</span>
                             </td>
                             <td>
                                 <div class="row">
@@ -97,10 +101,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="text-capitalize">
-                                        <td class="fw-bold">Ditolak Oleh</td>
-                                        <td>{{ $item->r_user->name }} - {{ $item->r_user->role }} - {{ $item->r_user->golongan->golongan_name }}</td>
-                                    </tr>
                                     <tr>
                                         <td class="fw-bold">Kode SPD</td>
                                         <td>{{ $item->kode_spd }}</td>
@@ -128,10 +128,6 @@
                                             <br>
                                             Kabupaten/Kota : {{ $item->r_kota->nama_kota }}
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Alasan Ditolak</td>
-                                        <td>{{ $item->keterangan }}</td>
                                     </tr>
                                     <tr>
                                         <td class="fw-bold">Jenis Perjalanan</td>

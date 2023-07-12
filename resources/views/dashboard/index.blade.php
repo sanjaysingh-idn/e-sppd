@@ -74,12 +74,8 @@
                             </div>
                         </div>
                         <span class="fw-semibold d-block mb-1">SPD USULAN</span>
-                        <h3 class="card-title mb-2">{{ $countUser }}</h3>
-                        @if (Auth::user()->role !== "pegawai")
-                        <small class="text-primary fw-semibold">
-                            <a href="/user" class="text-decoration-none text-primary"><i class="bx bx-subdirectory-right"></i> Daftar Pengajuan</a>
-                        </small>
-                        @endif
+                        <h3 class="card-title mb-2">{{ $spdUsulan }}</h3>
+
                     </div>
                 </div>
             </div>
@@ -94,12 +90,8 @@
                             </div>
                         </div>
                         <span class="fw-semibold d-block mb-1">SPD VERIFIKASI</span>
-                        <h3 class="card-title mb-2">{{ $countUser }}</h3>
-                        @if (Auth::user()->role !== "pegawai")
-                        <small class="text-success fw-semibold">
-                            <a href="/user" class="text-decoration-none text-primary"><i class="bx bx-link-external"></i> Daftar Akun</a>
-                        </small>
-                        @endif
+                        <h3 class="card-title mb-2">{{ $spdVerifikasi }}</h3>
+
                     </div>
                 </div>
             </div>
@@ -114,12 +106,8 @@
                             </div>
                         </div>
                         <span class="fw-semibold d-block mb-1">SPD BERJALAN</span>
-                        <h3 class="card-title mb-2">{{ $countGolongan }}</h3>
-                        @if (Auth::user()->role !== "pegawai")
-                        <small class="text-success fw-semibold">
-                            <a href="/golongan" class="text-decoration-none text-success"><i class="bx bx-link-external"></i> Daftar Golongan</a>
-                        </small>
-                        @endif
+                        <h3 class="card-title mb-2">{{ $spdPelaksanaan }}</h3>
+
                     </div>
                 </div>
             </div>
@@ -134,12 +122,8 @@
                             </div>
                         </div>
                         <span class="fw-semibold d-block mb-1">SPD SELESAI</span>
-                        <h3 class="card-title mb-2">{{ $countGolongan }}</h3>
-                        @if (Auth::user()->role !== "pegawai")
-                        <small class="text-success fw-semibold">
-                            <a href="/golongan" class="text-decoration-none text-success"><i class="bx bx-link-external"></i> Daftar Golongan</a>
-                        </small>
-                        @endif
+                        <h3 class="card-title mb-2">{{ $spdSelesai }}</h3>
+
                     </div>
                 </div>
             </div>
@@ -154,17 +138,13 @@
                         <div class="card-title d-flex align-items-start justify-content-between">
                             <div class="flex-shrink-0">
                                 <div class="alert-primary rounded text-center p-1">
-                                    <i class="bx bx-subdirectory-right text-primary fs-3"></i>
+                                    <i class="bx bxs-plane-take-off text-primary fs-3"></i>
                                 </div>
                             </div>
                         </div>
                         <span class="fw-semibold d-block mb-1">PEGAWAI DALAM PERJALANAN</span>
-                        <h4 class="card-title mb-2">{{ $countUser }} <small>Orang</small></h4>
-                        @if (Auth::user()->role !== "pegawai")
-                        <small class="text-primary fw-semibold">
-                            <a href="/user" class="text-decoration-none text-primary"><i class="bx bx-subdirectory-right"></i> Daftar Pengajuan</a>
-                        </small>
-                        @endif
+                        <h4 class="card-title mb-2">{{ $userPerjalanan }} <small>Orang</small></h4>
+
                     </div>
                 </div>
             </div>
@@ -174,22 +154,18 @@
                         <div class="card-title d-flex align-items-start justify-content-between">
                             <div class="flex-shrink-0">
                                 <div class="alert-success rounded text-center p-1">
-                                    <i class="bx bx-check-circle text-success fs-3"></i>
+                                    <i class="bx bx-user-circle text-success fs-3"></i>
                                 </div>
                             </div>
                         </div>
                         <span class="fw-semibold d-block mb-1">TOTAL PEGAWAI</span>
                         <h3 class="card-title mb-2">{{ $countUser }}</h3>
-                        @if (Auth::user()->role !== "pegawai")
-                        <small class="text-success fw-semibold">
-                            <a href="/user" class="text-decoration-none text-primary"><i class="bx bx-link-external"></i> Daftar Akun</a>
-                        </small>
-                        @endif
+
                     </div>
                 </div>
             </div>
             @if (Auth::user()->role !== "pegawai")
-            <div class="col-lg-6 col-md-4 col-sm-12 mb-4">
+            {{-- <div class="col-lg-6 col-md-4 col-sm-12 mb-4">
                 <div class="card h-100">
                     <div class="card-header d-flex align-items-center justify-content-between pb-0">
                         <div class="card-title mb-0">
@@ -258,7 +234,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             @endif
         </div>
     </div>

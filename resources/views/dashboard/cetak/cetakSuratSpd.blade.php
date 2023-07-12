@@ -533,6 +533,131 @@
                     </div>
                 </div>
             </div>
+            <div class="row border border-3 border-dark" style="page-break-before: always;">
+                <div class="col-12">
+                    <div class="head">
+                        <div class="row">
+                            <div class="col-1 ms-2 mt-3">I.</div>
+                            <div class="col-5 mt-3">
+                                <p class="my-0 text-decoration-underline lh-1">Tiba di</p>
+                                <p class="my-0 fst-italic lh-1">Arrival at</p>
+                                <p class="my-0 text-decoration-underline lh-1">Pada tanggal</p>
+                                <p class="my-0 fst-italic lh-1">Date</p>
+                                <p class="my-0 text-decoration-underline lh-1">Kepala Kantor</p>
+                                <p class="my-0 fst-italic lh-1">Head of Office</p>
+                            </div>
+                            <div class="col-1 ms-2 mt-3">II.</div>
+                            <div class="col-5 mt-3">
+                                <p class="my-0 text-decoration-underline lh-1">Berangkat dari</p>
+                                <p class="my-0 fst-italic lh-1">Departure From</p>
+                                <p class="my-0 text-decoration-underline lh-1">Ke</p>
+                                <p class="my-0 fst-italic lh-1">to</p>
+                                <p class="my-0 text-decoration-underline lh-1">Pada tanggal</p>
+                                <p class="my-0 fst-italic lh-1">date</p>
+                                <p class="my-0 text-decoration-underline lh-1">Kepala Kantor</p>
+                                <p class="my-0 fst-italic lh-1">Head of Office</p>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-1 ms-2 mt-3">III.</div>
+                            <div class="col-5 mt-3">
+                                <p class="my-0 text-decoration-underline lh-1">Tiba di</p>
+                                <p class="my-0 fst-italic lh-1">Arrival at</p>
+                                <p class="my-0 text-decoration-underline lh-1">Pada tanggal</p>
+                                <p class="my-0 fst-italic lh-1">Date</p>
+                                <p class="my-0 text-decoration-underline lh-1">Kepala Kantor</p>
+                                <p class="my-0 fst-italic lh-1">Head of Office</p>
+                            </div>
+                            <div class="col-1 ms-2 mt-3">IV.</div>
+                            <div class="col-5 mt-3">
+                                <p class="my-0 text-decoration-underline lh-1">Berangkat dari</p>
+                                <p class="my-0 fst-italic lh-1">Departure From</p>
+                                <p class="my-0 text-decoration-underline lh-1">Ke</p>
+                                <p class="my-0 fst-italic lh-1">to</p>
+                                <p class="my-0 text-decoration-underline lh-1">Pada tanggal</p>
+                                <p class="my-0 fst-italic lh-1">date</p>
+                                <p class="my-0 text-decoration-underline lh-1">Kepala Kantor</p>
+                                <p class="my-0 fst-italic lh-1">Head of Office</p>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <hr>
+                        <div class="row">
+                            <div class="col-1 ms-2 mt-3">V.</div>
+                            <div class="col-5 mt-3">
+                                <p class="my-0 text-decoration-underline lh-1">Tiba di</p>
+                                <p class="my-0 fst-italic lh-1">Arrival at</p>
+                                <p class="my-0 text-decoration-underline lh-1">Pada tanggal</p>
+                                <p class="my-0 fst-italic lh-1">Date</p>
+                                <p class="my-0 text-decoration-underline lh-1">Kepala Kantor</p>
+                                <p class="my-0 fst-italic lh-1">Head of Office</p>
+                            </div>
+                            <div class="col-1 ms-2 mt-3">VI.</div>
+                            <div class="col-5 mt-3">
+                                <p class="my-0 text-decoration-underline lh-1">Berangkat dari</p>
+                                <p class="my-0 fst-italic lh-1">Departure From</p>
+                                <p class="my-0 text-decoration-underline lh-1">Ke</p>
+                                <p class="my-0 fst-italic lh-1">to</p>
+                                <p class="my-0 text-decoration-underline lh-1">Pada tanggal</p>
+                                <p class="my-0 fst-italic lh-1">date</p>
+                                <p class="my-0 text-decoration-underline lh-1">Kepala Kantor</p>
+                                <p class="my-0 fst-italic lh-1">Head of Office</p>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-1 ms-2 mt-3">VII.</div>
+                            <div class="col-5 mt-3">
+                                <p class="my-0 text-decoration-underline lh-1">Tiba di Tempat Kedudukan</p>
+                                <p class="my-0 fst-italic lh-1">Arrival at Departure Point</p>
+                                <p class="my-0 text-decoration-underline lh-1">Pada tanggal</p>
+                                <p class="my-0 fst-italic lh-1">Date</p>
+                                <p class="my-0 text-decoration-underline lh-1">Pejabat Pembuat Komitmen</p>
+                                <p class="my-0 fst-italic lh-1">Authorizing Officer</p>
+                            </div>
+                            <div class="col-6 mt-3">
+                                <p class="my-0 lh-1 text-justify">
+                                    Telah diperiksa dengan keterangan bahwa perjalanan tersebut atas perintahnya dan semata- mata untuk kepentingan jabatan dalam waktu yang sesingkat- singkatnya
+                                </p>
+                                <p class="my-0 fst-italic text-white lh-1">.</p>
+                                <p class="my-0 text-decoration-underline lh-1">Pejabat Pembuat Komitmen</p>
+                                <p class="my-0 fst-italic lh-1">Authorizing Officer</p>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-1 ms-2 mt-3">
+
+                            </div>
+                            <div class="col-5 mt-3">
+                                <p class="my-0 lh-1">{{ $spd->ppk->name }}</p>
+                                <p class="my-0 lh-1">NIP. {{ $spd->ppk->nip }}</p>
+                            </div>
+                            <div class="col-6 mt-3">
+                                <p class="my-0 lh-1">{{ $spd->ppk->name }}</p>
+                                <p class="my-0 lh-1">NIP. {{ $spd->ppk->nip }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 

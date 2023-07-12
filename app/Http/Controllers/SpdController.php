@@ -50,7 +50,7 @@ class SpdController extends Controller
                 ]);
             }
         } else {
-            $spd        = Spd::all();
+            $spd = Spd::orderBy('id', 'desc')->get();
             $permintaan = Permintaan::all();
 
             return view('dashboard.spd.index', [
@@ -147,9 +147,11 @@ class SpdController extends Controller
 
     public function store(Request $request)
     {
-        $countUser = count($request->users);
-        if ($countUser > 5) {
-            return Redirect::back()->with('message_peserta', 'Peserta Maximal 5');
+        if ($request->user !== 0) {
+            $countUser = count($request->users);
+            if ($countUser > 5) {
+                return Redirect::back()->with('message_peserta', 'Peserta Maximal 5');
+            };
         };
 
         $getUserID      = Auth::user()->id;
@@ -291,7 +293,7 @@ class SpdController extends Controller
         DB::update('update users set permintaan_id = ? where id = ?', [$getIdPermintaan, $getUserID]);
 
         // UPDATE DAFTAR PESERTA
-        if ($request->users != 0) {
+        if ($request->users !== 0) {
             foreach ($request->users as $item) {
                 $user = User::where('id', $item)->first();
 

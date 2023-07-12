@@ -34,7 +34,12 @@
                         $no = 1;
                         @endphp
                         @foreach ($spd as $item)
-                        <tr>
+                        <tr @if ($item->status_spd == 'selesai')
+                            style="background-color: rgba(236, 240, 241, 0.5);
+                            pointer-events: none;
+                            width: 100%;"
+                            @endif
+                            >
                             <td>{{ $no++ }}</td>
                             <td>
                                 {{ $item->kode_spd }}
@@ -69,11 +74,21 @@
                             <td>
                                 <div class="row">
                                     <div class="col-12">
-                                        @if (Auth::user()->role == 'admin')
-
-                                        <button class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#modalDelete{{ $item->id }}"><i class="bx bx-trash me-1"></i> Delete</button>
-
+                                        @if (Auth::user()->role == 'penanggung jawab kegiatan' || Auth::user()->role == 'admin')
+                                        @if ($item->status_spd == "usulan")
+                                        <div class="col-12 my-1">
+                                            <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalVerifikasi{{ $item->id }}"><i class="bx bx-pen me-1"></i> Verifikasi</button>
+                                        </div>
+                                        <div class="col-12 mt-1">
+                                            <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#modalTolak{{ $item->id }}"><i class="bx bx-x-circle me-1"></i> Tolak</button>
+                                        </div>
                                         @endif
+                                        @endif
+                                        {{-- @if (Auth::user()->role == 'admin')
+
+                                        <button class="btn btn-danger my-2" data-bs-toggle="modal" data-bs-target="#modalDelete{{ $item->id }}"><i class="bx bx-trash me-1"></i> Delete</button>
+
+                                        @endif --}}
                                         @if (Auth::user()->role == 'admin' || Auth::user()->role == 'bendahara')
                                         @if ($item->status_spd == 'pelaksanaan')
 
@@ -82,17 +97,8 @@
                                         @endif
                                         @endif
                                     </div>
-                                    @if (Auth::user()->role == 'penanggung jawab kegiatan')
-                                    @if ($item->status_spd == "usulan")
-                                    <div class="col-12 my-1">
-                                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalVerifikasi{{ $item->id }}"><i class="bx bx-pen me-1"></i> Verifikasi</button>
-                                    </div>
-                                    <div class="col-12 mt-1">
-                                        <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#modalTolak{{ $item->id }}"><i class="bx bx-x-circle me-1"></i> Tolak</button>
-                                    </div>
-                                    @endif
-                                    @endif
-                                    @if (Auth::user()->role == 'pejabat pembuat komitmen')
+
+                                    @if (Auth::user()->role == 'pejabat pembuat komitmen' || Auth::user()->role == 'admin')
                                     @if ($item->status_spd == "verifikasi")
                                     <div class="col-12 mt-1">
                                         <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalPenugasan{{ $item->id }}"><i class="bx bxs-plane-alt me-1"></i> Penugasan</button>

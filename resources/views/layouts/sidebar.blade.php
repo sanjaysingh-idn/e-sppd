@@ -47,7 +47,7 @@
                 </li>
             </ul>
         </li>
-        <li class="menu-item {{ request()->is('laporan','laporan/laporan-selesai') ? 'active open' : '' }}">
+        <li class="menu-item {{ request()->is('laporan','laporan/laporanSelesai') ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class='menu-icon tf-icons bx bxs-report'></i>
                 <div>Laporan Perjadin</div>

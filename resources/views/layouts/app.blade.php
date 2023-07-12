@@ -87,7 +87,7 @@
                                     ( SIPERJADIN )
                                 </div>
                                 <div class="fs-4 fw-bold my-3">
-                                    Sistem Informasi Perjalanan Dinas Kemendagri
+                                    Sistem Informasi Perjalanan Dinas Kemendag
                                 </div>
                             </div>
                             <!-- /Logo -->

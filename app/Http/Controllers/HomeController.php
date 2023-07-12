@@ -42,13 +42,26 @@ class HomeController extends Controller
             ->where('spds.status_spd', '=', 'selesai')
             ->whereYear('permintaans.updated_at', $currentYear)
             ->sum('permintaans.jumlah');
+        $spdUsulan = Spd::where('status_spd', 'usulan')->count();
+        $spdVerifikasi = Spd::where('status_spd', 'verifikasi')->count();
+        $spdPelaksanaan = Spd::where('status_spd', 'pelaksanaan')->count();
+        $spdSelesai = Spd::where('status_spd', 'selesai')->count();
+        $spdDitolak = Spd::where('status_spd', 'ditolak')->count();
+        $userPerjalanan = User::whereNotNull('spd_id')->count();
+
         return view('dashboard.index', [
             'title'             => 'Dashboard Page',
             'countUser'         => User::all()->count(),
             'countGolongan'     => Golongan::all()->count(),
             'countSpd'          => Spd::all()->count(),
-            'bulanan'          => $bulanan,
-            'tahunan'          => $tahunan,
+            'bulanan'           => $bulanan,
+            'tahunan'           => $tahunan,
+            'spdUsulan'         => $spdUsulan,
+            'spdVerifikasi'     => $spdVerifikasi,
+            'spdPelaksanaan'    => $spdPelaksanaan,
+            'spdSelesai'        => $spdSelesai,
+            'spdDitolak'        => $spdDitolak,
+            'userPerjalanan'    => $userPerjalanan,
         ]);
     }
 }
