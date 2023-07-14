@@ -20,6 +20,7 @@
                             <th>Alasan Ditolak</th>
                             <th>Tujuan</th>
                             <th>Tanggal</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -38,7 +39,7 @@
                                 {{ $item->maksud }}
                             </td>
                             <td>
-                                {{ $item->keterangan }}
+                                <p class="fw-bold">{{ $item->keterangan }}</p>
                             </td>
                             <td class="text-nowrap">
                                 <br>
@@ -50,6 +51,9 @@
                                 {{ date('d M Y', strtotime($item->tanggal_mulai)) }}
                                 -
                                 {{ date('d M Y', strtotime($item->tanggal_pulang)) }}
+                            </td>
+                            <td>
+                                <span class="badge bg-danger rounded-pill text-bg-danger"><i class="bx bx-x-circle"></i>{{ $item->status_spd }}</span>
                             </td>
                             <td>
                                 <div class="row">
@@ -97,10 +101,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="text-capitalize">
-                                        <td class="fw-bold">Ditolak Oleh</td>
-                                        <td>{{ $item->r_user->name }} - {{ $item->r_user->role }} - {{ $item->r_user->golongan->golongan_name }}</td>
-                                    </tr>
                                     <tr>
                                         <td class="fw-bold">Kode SPD</td>
                                         <td>{{ $item->kode_spd }}</td>
@@ -128,10 +128,6 @@
                                             <br>
                                             Kabupaten/Kota : {{ $item->r_kota->nama_kota }}
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Alasan Ditolak</td>
-                                        <td>{{ $item->keterangan }}</td>
                                     </tr>
                                     <tr>
                                         <td class="fw-bold">Jenis Perjalanan</td>

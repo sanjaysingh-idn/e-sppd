@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     @if ($errors->any())
-    @dd($errors){{-- for check error bag --}}
+    {{-- @dd($errors) --}}
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $message)

@@ -15,22 +15,35 @@ class LaporanController extends Controller
 {
     public function laporanDitolak()
     {
+        $getTable = Spd::where('status_spd', 'ditolak')->get();
+        // dd($getTable);
         $getUser            = Auth::user()->role;
         $getUserId          = Auth::user()->id;
 
         if ($getUser == "pegawai") {
-            $laporan            = Laporan::where('id', $getUserId)->get();
+            $getTable = Spd::where('status_spd', 'ditolak')
+                ->where('id', $getUserId)
+                ->get();
 
+            $totalBiaya = DB::table('permintaans')
+                ->join('spds', 'permintaans.spd_id', '=', 'spds.id')
+                ->where('spds.status_spd', '=', 'ditolak')
+                ->where('user_id', $getUserId)
+                ->sum('permintaans.jumlah');
             return view('dashboard.laporan.laporanDitolak', [
                 'title'         => 'Laporan Surat Perjalanan Dinas',
-                'laporan'       => $laporan,
+                'laporan'       => $getTable,
+                'totalBiaya'    => $totalBiaya,
             ]);
         } else {
-            $laporan        = Laporan::all();
-
+            $totalBiaya = DB::table('permintaans')
+                ->join('spds', 'permintaans.spd_id', '=', 'spds.id')
+                ->where('spds.status_spd', '=', 'ditolak')
+                ->sum('permintaans.jumlah');
             return view('dashboard.laporan.laporanDitolak', [
                 'title'         => 'Laporan Surat Perjalanan Dinas',
-                'laporan'       => $laporan,
+                'laporan'       => $getTable,
+                'totalBiaya'    => $totalBiaya,
             ]);
         }
     }

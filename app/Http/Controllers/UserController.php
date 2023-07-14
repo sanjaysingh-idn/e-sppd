@@ -88,7 +88,7 @@ class UserController extends Controller
             'address'       => 'required|max:255',
             'tempat_lahir'  => 'required|max:255',
             'tgl_lahir'     => 'required',
-            'image'         => 'image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1024|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000,ratio=1/1',
+            'image'         => 'image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:1024',
         ]);
         if ($request->file('image')) {
             Storage::delete($user->image);

@@ -54,12 +54,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item {{ request()->is('laporan/laporanDitolak') ? 'active' : '' }}">
-                    <a href="laporan/laporanDitolak" class="menu-link">
+                    <a href="{{ route('laporan.laporanDitolak') }}" class="menu-link">
                         <div>Laporan Ditolak</div>
                     </a>
                 </li>
                 <li class="menu-item {{ request()->is('laporan/laporanSelesai') ? 'active' : '' }}">
-                    <a href="laporan/laporanSelesai" class="menu-link">
+                    <a href="{{ route('laporan.laporanSelesai') }}" class="menu-link">
                         <div>Laporan Selesai</div>
                     </a>
                 </li>

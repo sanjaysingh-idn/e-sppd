@@ -34,11 +34,9 @@
                         $no = 1;
                         @endphp
                         @foreach ($spd as $item)
-                        <tr @if ($item->status_spd == 'selesai')
-                            style="background-color: rgba(236, 240, 241, 0.5);
-                            pointer-events: none;
-                            width: 100%;"
-                            @endif
+                        <tr @if ($item->status_spd == 'selesai' || $item->status_spd == 'ditolak')
+                            style="visibility: hidden;"
+                            @endif>
                             >
                             <td>{{ $no++ }}</td>
                             <td>

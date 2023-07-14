@@ -30,7 +30,9 @@ class SpdController extends Controller
         if ($getUser == "pegawai") {
             // Jika Pegawai tampilkan SPD nya
             if ($getUserSpdId) {
-                $spd            = Spd::where('id', $getUserSpdId)->get();
+                $spd            = Spd::where('id', $getUserSpdId)
+                    ->whereNotIn('status_spd', ['ditolak', 'selesai'])
+                    ->get();
                 $getPermintaan  = Permintaan::where('user_id', $getUserId)->first();
                 $getSpdId       = $getPermintaan->spd_id;
 
@@ -50,7 +52,9 @@ class SpdController extends Controller
                 ]);
             }
         } else {
-            $spd = Spd::orderBy('id', 'desc')->get();
+            $spd = Spd::orderBy('id', 'desc')
+                ->whereNotIn('status_spd', ['ditolak', 'selesai'])
+                ->get();
             $permintaan = Permintaan::all();
 
             return view('dashboard.spd.index', [
@@ -73,6 +77,9 @@ class SpdController extends Controller
             'spd'           => $spd,
             'permintaan'    => $permintaan,
         ];
+
+        // return view('dashboard.cetak.cetakPermintaan', $data);
+
         $pdf = PDF::loadView('dashboard.cetak.cetakPermintaan', $data);
         $pdf->setOrientation('landscape')->setPaper('a4')->setOption('enable-local-file-access', true);
         $kode_spd = $spd->kode_spd;
@@ -88,6 +95,8 @@ class SpdController extends Controller
             'spd'           => $spd,
             'permintaan'    => $permintaan,
         ];
+
+        // return view('dashboard.cetak.cetakSuratTugas', $data);
 
         $pdf = PDF::loadView('dashboard.cetak.cetakSuratTugas', $data);
         $pdf->setOrientation('portrait')->setPaper('a4')->setOption('enable-local-file-access', true);
@@ -518,6 +527,17 @@ class SpdController extends Controller
         User::where('spd_id', $getSpd->id)->update(['spd_id' => null, 'permintaan_id' => null]);
 
         return redirect('spd')->with('message_verifikasi', 'Perjalanan Dinas selesai, data akan diinput ke dalam laporan');
+    }
+
+    public function tolak($id)
+    {
+        $getSpd = Spd::find($id);
+        $getSpd->status_spd = "ditolak";
+        $getSpd->save();
+
+        User::where('spd_id', $getSpd->id)->update(['spd_id' => null, 'permintaan_id' => null]);
+
+        return redirect('spd')->with('message_verifikasi', 'Perjalanan Dinas Berhasil Ditolak, data akan diinput ke dalam Laporan Ditolak');
     }
 
     public function getProvince()
