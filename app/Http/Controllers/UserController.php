@@ -104,10 +104,7 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        // Delete the image from storage
-        Storage::delete($user->image);
-
-        // Delete the user from the database
-        $user->delete();
+        User::destroy($user->id);
+        return back()->with('message', 'User berhasil dihapus');
     }
 }

@@ -271,13 +271,13 @@
                                                 <span class="fst-italic mt-0 ps-1">Place of Issuance</span>
                                                 <p class="mb-0 ps-1"><span class="text-decoration-underline">Tanggal </span> : {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $spd->verifikasi_pelaksanaan_pada)->locale('id')->isoFormat('D MMMM Y') }}</p>
                                                 <span class="fst-italic mt-0 ps-1">Date of Issuance</span>
-                                                <p class="mb-0 ps-1 text-decoration-underline text-capitalize">{{ $spd->ppk->role }}</p>
+                                                <p class="mb-0 ps-1 text-decoration-underline text-capitalize">Pejabat Pembuat Komitmen</p>
                                                 <span class="fst-italic mt-0 ps-1">Authorizing Officer</span>
                                                 <br>
                                                 <br>
                                                 <br>
-                                                <p class="mb-0 text-decoration-underline ps-1">{{ $spd->ppk->name }}</p>
-                                                <p class="ps-1">NIP. {{ $spd->ppk->nip }}</p>
+                                                <p class="mb-0 text-decoration-underline ps-1">Erwansyah, S.E., M.Si.</p>
+                                                <p class="ps-1">NIP. 19740531 200604 1 004</p>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -517,13 +517,13 @@
                                                 <span class="fst-italic mt-0 ps-1">Place of Issuance</span>
                                                 <p class="mb-0 ps-1"><span class="text-decoration-underline">Tanggal </span> : {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $spd->verifikasi_pelaksanaan_pada)->locale('id')->isoFormat('D MMMM Y') }}</p>
                                                 <span class="fst-italic mt-0 ps-1">Date of Issuance</span>
-                                                <p class="mb-0 ps-1 text-decoration-underline text-capitalize">{{ $spd->ppk->role }}</p>
+                                                <p class="mb-0 ps-1 text-decoration-underline text-capitalize">Pejabat Pembuat Komitmen</p>
                                                 <span class="fst-italic mt-0 ps-1">Authorizing Officer</span>
                                                 <br>
                                                 <br>
                                                 <br>
-                                                <p class="mb-0 text-decoration-underline ps-1">{{ $spd->ppk->name }}</p>
-                                                <p class="ps-1">NIP. {{ $spd->ppk->nip }}</p>
+                                                <p class="mb-0 text-decoration-underline ps-1">Erwansyah, S.E., M.Si.</p>
+                                                <p class="ps-1">NIP. 19740531 200604 1 004</p>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -647,12 +647,12 @@
 
                             </div>
                             <div class="col-5 mt-3">
-                                <p class="my-0 lh-1">{{ $spd->ppk->name }}</p>
-                                <p class="my-0 lh-1">NIP. {{ $spd->ppk->nip }}</p>
+                                <p class="my-0 lh-1">Erwansyah, S.E., M.Si.</p>
+                                <p class="my-0 lh-1">NIP. 196305041993031001</p>
                             </div>
                             <div class="col-6 mt-3">
-                                <p class="my-0 lh-1">{{ $spd->ppk->name }}</p>
-                                <p class="my-0 lh-1">NIP. {{ $spd->ppk->nip }}</p>
+                                <p class="my-0 lh-1">Erwansyah, S.E., M.Si.</p>
+                                <p class="my-0 lh-1">NIP. 196305041993031001</p>
                             </div>
                         </div>
                     </div>

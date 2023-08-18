@@ -116,11 +116,11 @@
                 <div class="col-5">
                     <p class="mb-0">Setuju dibebankan pada mata anggaran berkenaan,</p>
                     <p class="mb-0">a.n. Kuasa Pengguna Anggaran</p>
-                    <p class="mb-4 text-capitalize">{{ $spd->ppk->role }},</p>
+                    <p class="mb-4 text-capitalize">Pejabat Pembuat Komitmen</p>
                     <br>
                     <br>
-                    <p class="mb-0 text-decoration-underline">{{ $spd->ppk->name }}</p>
-                    <p>NIP. {{ $spd->ppk->nip }}</p>
+                    <p class="mb-0 text-decoration-underline">Erwansyah, S.E., M.Si.</p>
+                    <p>NIP. 19740531 200604 1 004</p>
                 </div>
                 <div class="col-3">
                 </div>
@@ -232,11 +232,11 @@
                 <div class="col-4">
                     <p class="mb-0">Jakarta, {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $spd->verifikasi_pelaksanaan_pada)->locale('id')->isoFormat('D MMMM Y') }}</p>
                     <p class="mb-0">A.n. Kuasa Pengguna Anggaran</p>
-                    <p class="text-capitalize">{{ $spd->ppk->role }},</p>
+                    <p class="text-capitalize">Pejabat Pembuat Komitmen</p>
                     <br>
                     <br>
-                    <p class="mb-0 text-decoration-underline">{{ $spd->ppk->name }}</p>
-                    <p>NIP. {{ $spd->ppk->nip }}</p>
+                    <p class="mb-0 text-decoration-underline">Erwansyah, S.E., M.Si.</p>
+                    <p>NIP. 19740531 200604 1 004</p>
                 </div>
             </div>
             <div class="row mt-4">
@@ -551,12 +551,12 @@
                 <div class="col-4">
                     <p class="mb-0">Direktur Bina Usaha Perdagangan</p>
                     <p class="mb-0">A.n. Kuasa Pengguna Anggaran</p>
-                    <p class="text-capitalize">{{ $spd->ppk->role }},</p>
+                    <p class="text-capitalize">Pejabat Pembuat Komitmen</p>
                     <br>
                     <br>
                     <br>
-                    <p class="mb-0 text-decoration-underline">{{ $spd->ppk->name }}</p>
-                    <p>NIP. {{ $spd->ppk->nip }}</p>
+                    <p class="mb-0 text-decoration-underline">Erwansyah, S.E., M.Si.</p>
+                    <p>NIP. 19740531 200604 1 004</p>
                 </div>
             </div>
         </div>

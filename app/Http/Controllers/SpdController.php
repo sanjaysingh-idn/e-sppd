@@ -68,6 +68,21 @@ class SpdController extends Controller
         }
     }
 
+    public function detail($id)
+    {
+        $spd        = Spd::where('id', $id)->first();
+        $permintaan = Permintaan::where('spd_id', $id)->get();
+        // $getPPK = User::where('role', 'pejabat pembuat komitmen')->first();
+        // dd($getPPK);
+        $data = [
+            'title'         => 'Cetak Surat Tugas',
+            'spd'           => $spd,
+            'permintaan'    => $permintaan,
+        ];
+
+        return view('dashboard.spd.detail', $data);
+    }
+
     public function cetakPermintaan($id)
     {
         $spd        = Spd::where('id', $id)->first();
@@ -491,13 +506,26 @@ class SpdController extends Controller
     public function nota($id)
     {
         $permintaan = Permintaan::where('spd_id', $id)->where('user_id', Auth()->user()->id)->first();
+
+        if (!$permintaan) {
+            // Handle the case where $permintaan is null, perhaps with a redirect
+            return redirect()->back()->with('message_noaccess', 'Ini bukan halaman nota anda');
+        }
+
         $nota = Nota::where('permintaan_id', $permintaan->id)->where('user_id', Auth()->user()->id)->get();
+
+        // if ($nota->isEmpty()) {
+        //     // Redirect back with a message if $nota is empty
+        //     return redirect()->back()->with('warning', 'No nota found.');
+        // }
+
         return view('dashboard.nota.index', [
             'title'         => 'Upload Nota',
             'permintaan'    => $permintaan,
             'nota'          => $nota,
         ]);
     }
+
 
     public function add_nota(Request $request)
     {

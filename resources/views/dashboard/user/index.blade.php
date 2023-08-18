@@ -66,7 +66,7 @@
                                 </td>
                                 <td>
                                     <a class="btn btn-xs btn-warning" href="{{ route('user.edit', $item->id, '.edit') }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                    <a class="btn btn-xs btn-danger" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                                    <button class="btn btn-xs btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete{{ $item->id }}"><i class="bx bx-trash me-1"></i> Delete</button>
                                 </td>
                             </tr>
                             @endforeach
@@ -217,6 +217,46 @@
         </div>
     </div>
 </div>
+
+{{-- Modal Delete --}}
+@foreach ($users as $item)
+<div class="modal fade" id="modalDelete{{ $item->id }}" tabindex="-1" aria-modal="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalDeleteTitle">Delete User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('user.destroy', $item->id) }}" method="POST">
+                @csrf
+                @method('delete')
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-danger" role="alert">
+                                <h4 class="alert-heading">Apakah anda yakin ingin menghapus data User</h4>
+                                <p><strong>{{ $item->nama }}</strong> ?</p>
+                                <ul>
+                                    <li>Jabatan : {{ $item->jabatan->jabatan_name }}</li>
+                                    <li>Golongan : {{ $item->golongan->golongan_name }}</li>
+                                    <li>Role : {{ $item->role }}</li>
+                                </ul>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-danger"><i class="bx bx-trash"></i> Hapus data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
 
 @endpush
 

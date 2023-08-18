@@ -37,7 +37,7 @@
                         <tr @if ($item->status_spd == 'selesai' || $item->status_spd == 'ditolak')
                             style="visibility: hidden;"
                             @endif>
-                            >
+
                             <td>{{ $no++ }}</td>
                             <td>
                                 {{ $item->kode_spd }}
@@ -119,10 +119,10 @@
                                         <a href="{{ route('nota', $item->id) }}" class="btn btn-xs btn-primary"><i class="bx bxs-file-jpg me-1"></i> Upload Nota</a>
                                         <button class="btn btn-xs btn-secondary" data-bs-toggle="modal" data-bs-target="#modalTiket{{ $item->id }}"><i class="bx bx-purchase-tag me-1"></i> Tiket</button>
                                         @endif
-                                        <button class="btn btn-xs btn-info" data-bs-toggle="modal" data-bs-target="#modalDetail{{ $item->id }}"><i class="bx bx-info-square me-1"></i> Detail</button>
-                                        @if ($item->status_spd !== "usulan" && $item->status_spd !== "verifikasi")
+                                        <a href="{{ route('detail', $item->id) }}" class="btn btn-xs btn-info"><i class="bx bx-info-square me-1"></i> Detail</a>
+                                        {{-- @if ($item->status_spd !== "usulan" && $item->status_spd !== "verifikasi")
                                         <button class="btn btn-xs btn-warning" data-bs-toggle="modal" data-bs-target="#modalPermintaan{{ $item->id }}"><i class="bx bx-paperclip me-1"></i> Permintaan</button>
-                                        @endif
+                                        @endif --}}
                                         @if ($item->status_spd == "pelaksanaan")
                                         <button class="btn btn-xs btn-dark" data-bs-toggle="modal" data-bs-target="#modalBerkas{{ $item->id }}"><i class="bx bx-file me-1"></i> Cetak Berkas</button>
                                         @endif
@@ -359,169 +359,6 @@
 @endforeach
 @endif
 
-@if (isset($spd))
-{{-- Modal Detail --}}
-@foreach ($spd as $item)
-<div class="modal fade" id="modalDetail{{ $item->id }}" tabindex="-1" aria-modal="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content">
-            <div class="modal-header bg-info pb-3">
-                <h5 class="modal-title text-white" id="modalDetailTitle">Detail Surat Perjalanan Dinas</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-12">
-                        <small class="mb-4">Diinput pada : {{ date("d M Y, G:i:s", strtotime($item->created_at)) }} ({{ $item->created_at->diffForHumans() }})</small>
-                        <br>
-                        <small class="mb-4">Diinput oleh : {{ $item->input_by }}</small>
-                        <div class="table-responsive mt-2">
-                            <table id="table-modal" class="table table-bordered w-100">
-                                <thead class="bg-info">
-                                    <tr>
-                                        <th colspan="2" class="text-white">Detail SPD</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="fw-bold">Kode SPD</td>
-                                        <td>{{ $item->kode_spd }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Maksud</td>
-                                        <td>{{ $item->maksud }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Tujuan</td>
-                                        <td>{{ $item->r_provinsi->nama_provinsi }} - {{ $item->r_kota->nama_kota }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Status SPD</td>
-                                        <td class="text-uppercase fw-bold">{{ $item->status_spd }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Jenis Perjalanan</td>
-                                        <td class="text-capitalize">{{ $item->jenis_perjalanan }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Tanggal Berangkat</td>
-                                        <td>{{ date('d F Y', strtotime($item->tanggal_mulai)) }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Tanggal Pulang</td>
-                                        <td>{{ date('d F Y', strtotime($item->tanggal_pulang)) }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Lama</td>
-                                        <td>
-                                            {{ $item->lama }} Hari
-                                            <br>
-                                            {{ $item->malam }} Malam
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">Undangan</td>
-                                        <td>
-                                            @if ($item->undangan)
-                                            <img src="{{ asset('storage/'. $item->undangan) }}" class="img-thumbnail" frameborder="0">
-                                            @endif
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <p class="text-center fw-bold">DETAIL PERMINTAAN</p>
-                        <div class="table-responsive text-nowrap">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr class="text-center align-middle">
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Pangkat/Gol</th>
-                                        <th>Nip</th>
-                                        <th>Taxi</th>
-                                        <th>Hotel <br>({{ $item->malam }} Malam)</th>
-                                        <th>Tiket Pesawat</th>
-                                        <th>Uang Harian <br>({{ $item->lama }} Hari)</th>
-                                        <th>Uang Representasi</th>
-                                        <th>Jumlah</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @php
-                                    $no = 1;
-                                    @endphp
-                                    @foreach ($permintaan as $p)
-                                    @if ($p->spd_id == $item->id)
-                                    <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $p->nama }}</td>
-                                        <td>{{ $p->golongan }}</td>
-                                        <td>{{ $p->nip }}</td>
-                                        <td>
-                                            Rp. {{ number_format($p->biaya_taksi) }}
-                                        </td>
-                                        <td>
-                                            Rp. {{ number_format($p->jumlah_biaya_penginapan) }}
-                                        </td>
-                                        <td>
-                                            Rp. {{ number_format($p->tiket_pesawat) }}
-                                        </td>
-                                        <td>
-                                            Rp. {{ number_format($p->jumlah_uang_harian) }}
-                                        </td>
-                                        <td>
-                                            Rp. {{ number_format($p->jumlah_uang_representasi) }}
-                                        </td>
-                                        <td>
-                                            Rp. {{ number_format($p->jumlah) }}
-                                        </td>
-                                    </tr>
-                                    @endif
-                                    @endforeach
-                                </tbody>
-                                <tfoot>
-                                    <tr class="fw-bold">
-                                        <td colspan="4">TOTAL</td>
-                                        <td>
-                                            Rp. {{ number_format($permintaan->sum('biaya_taksi')) }}
-                                        </td>
-                                        <td>
-                                            Rp. {{ number_format($permintaan->sum('jumlah_biaya_penginapan')) }}
-                                        </td>
-                                        <td>
-                                            Rp. {{ number_format($permintaan->sum('tiket_pesawat')) }}
-                                        </td>
-                                        <td>
-                                            Rp. {{ number_format($permintaan->sum('jumlah_uang_harian')) }}
-                                        </td>
-                                        <td>
-                                            Rp. {{ number_format($permintaan->sum('jumlah_uang_representasi')) }}
-                                        </td>
-                                        <td>
-                                            Rp. {{ number_format($permintaan->sum('jumlah')) }}
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                    Close
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
-@endif
 
 @if (isset($spd))
 {{-- Modal Tiket --}}

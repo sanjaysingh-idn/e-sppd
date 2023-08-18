@@ -19,7 +19,7 @@
                             <th>Maksud</th>
                             <th>Tujuan</th>
                             <th>Tanggal</th>
-                            <th>Total Biaya</th>
+                            {{-- <th>Total Biaya</th> --}}
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -49,9 +49,9 @@
                                 -
                                 {{ date('d M Y', strtotime($item->tanggal_pulang)) }}
                             </td>
-                            <td>
+                            {{-- <td>
                                 <span class="fw-bold">Rp. {{ number_format($totalBiaya) }}</span>
-                            </td>
+                            </td> --}}
                             <td>
                                 <span class="badge bg-success rounded-pill text-bg-success"><i class="bx bx-check"></i>{{ $item->status_spd }}</span>
                             </td>

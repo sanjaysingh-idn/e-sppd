@@ -42,7 +42,7 @@
                     <div class="head">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <img src="{{ public_path('storage/kop/kop-kemendagri.png') }}" alt="" srcset="" class="w-100">
+                                <img src="{{ public_path('image/kop-kemendagri.png') }}" alt="" srcset="" class="w-100">
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -147,11 +147,11 @@
                                     @endif
                                 </p>
                                 <p class="mb-0">A.n. Kuasa Pengguna Anggaran</p>
-                                <p>{{ $spd->ppk->jabatan->jabatan_name }},</p>
+                                <p>Pejabat Pembuat Komitmen,</p>
                                 <br>
                                 <br>
-                                <p class="mb-0 text-decoration-underline">{{ $spd->ppk->name }}</p>
-                                <p>NIP. {{ $spd->ppk->nip }}</p>
+                                <p class="mb-0 text-decoration-underline">Erwansyah, S.E., M.Si.</p>
+                                <p>NIP. 19740531 200604 1 004</p>
                             </div>
                         </div>
                         <div class="row mt-5">

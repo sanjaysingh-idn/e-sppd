@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::put('profile.update', [ProfileController::class, 'update'])->name('profile.update');
     Route::resource('spd', SpdController::class);
     Route::prefix('spd')->group(function () {
+        Route::get('/detail/{id}', [SpdController::class, 'detail'])->name('detail');
         Route::get('/cetak-permintaan/{id}', [SpdController::class, 'cetakPermintaan'])->name('cetak.permintaan');
         Route::get('/cetak-surat-tugas/{id}', [SpdController::class, 'cetakSuratTugas'])->name('cetak.suratTugas');
         Route::get('/cetak-surat-spd/{id}', [SpdController::class, 'cetakSuratSpd'])->name('cetak.suratSpd');
