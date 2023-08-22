@@ -25,7 +25,9 @@
         <div class="card-body">
             <div class="row mb-3">
                 <div class="col-12">
+                    @if ($spd->status_spd == "pelaksanaan")
                     <a href="{{ route('cetak.permintaan', $spd->id) }}" target="_blank" class="btn btn-warning"><i class="bx bx-printer"></i> Cetak Permintaan</a>
+                    @endif
                 </div>
             </div>
             <div class="row">

@@ -228,11 +228,12 @@
                             </div>
                             <div class="col-4 ps-3">
                                 <p class="mb-0">Jakarta, {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $spd->verifikasi_pada)->locale('id')->isoFormat('D MMMM Y') }}</p>
-                                <p class="mb-0">{{ $spd->pj->jabatan->jabatan_name }}</p>
+                                <p class="mb-0">A.n. Kuasa Pengguna Anggaran</p>
+                                <p class="mb-0">Pejabat Pembuat Komitmen,</p>
                                 <br>
                                 <br>
-                                <p class="mb-0 text-decoration-underline">{{ $spd->pj->name }}</p>
-                                <p>NIP. {{ $spd->pj->nip }}</p>
+                                <p class="mb-0 text-decoration-underline">Erwansyah, S.E., M.Si.</p>
+                                <p>NIP. 19740531 200604 1 004</p>
                             </div>
                         </div>
                     </div>

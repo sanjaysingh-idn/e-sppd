@@ -1,0 +1,5 @@
+revisi bug
+1. Cetak permintaan muncul setelah verifikasi dan penugasan dan mengisi tiket pesawat == SELESAI
+2. Alasan ditolak tidak muncul == SELESAI
+3. Peserta sppd belum muncul semua == SELESAI
+4. Tiket pasawat jika di isi 1 harus di isi semua == SELESAI

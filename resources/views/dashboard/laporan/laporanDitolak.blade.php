@@ -39,7 +39,7 @@
                                 {{ $item->maksud }}
                             </td>
                             <td>
-                                <p class="fw-bold">{{ $item->keterangan }}</p>
+                                <p>{{ $item->keterangan }}</p>
                             </td>
                             <td class="text-nowrap">
                                 <br>

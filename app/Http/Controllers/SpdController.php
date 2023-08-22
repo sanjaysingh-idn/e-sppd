@@ -161,11 +161,17 @@ class SpdController extends Controller
         $jenis_perjalanan   = ['luar kota', 'dalam kota', 'diklat'];
         $jenis_transportasi = ['darat', 'udara'];
 
+        $loggedInUser = auth()->user(); // Get the logged-in user
+
+        $nonAdminUsers = User::where('role', '!=', 'admin')
+            ->where('id', '!=', $loggedInUser->id) // Exclude the logged-in user
+            ->get();
+
         return view('dashboard.spd.create', [
             'title'                 => 'Formulir Pengajuan Perjalanan Dinas',
             'jenis_perjalanan'      => $jenis_perjalanan,
             'jenis_transportasi'    => $jenis_transportasi,
-            'user'                  => User::where('role', '=', 'pegawai')->get()
+            'user'                  => $nonAdminUsers
         ]);
     }
 
@@ -495,10 +501,13 @@ class SpdController extends Controller
         } else {
             $tiket_pesawat = $request->tiket_pesawat_manual;
         }
-        $permintaan = Permintaan::where('spd_id', $id)->where('user_id', Auth()->user()->id)->first();
+        // $permintaan = Permintaan::where('spd_id', $id)->where('user_id', Auth()->user()->id)->first();
+        $permintaan = Permintaan::where('spd_id', $id)->get();
 
-        $permintaan->tiket_pesawat                     = $tiket_pesawat;
-        $permintaan->save();
+        foreach ($permintaan as $item) {
+            $item->tiket_pesawat = $tiket_pesawat;
+            $item->save();
+        }
 
         return redirect('spd')->with('message_verifikasi', 'Tiket Pesawat berhasil diinput');
     }
@@ -557,10 +566,11 @@ class SpdController extends Controller
         return redirect('spd')->with('message_verifikasi', 'Perjalanan Dinas selesai, data akan diinput ke dalam laporan');
     }
 
-    public function tolak($id)
+    public function tolak(Request $request, $id)
     {
         $getSpd = Spd::find($id);
         $getSpd->status_spd = "ditolak";
+        $getSpd->keterangan = $request->keterangan;
         $getSpd->save();
 
         User::where('spd_id', $getSpd->id)->update(['spd_id' => null, 'permintaan_id' => null]);
