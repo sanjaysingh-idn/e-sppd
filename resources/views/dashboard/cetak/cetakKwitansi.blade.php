@@ -191,24 +191,28 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-3">Dibebankan pada</div>
+                <div class="col-2">Dibebankan pada</div>
                 <div class="col-1"></div>
-                <div class="col-8">
+                <div class="col-6">
 
                 </div>
+                <div class="col-3">
+                </div>
             </div>
             <div class="row">
-                <div class="col-3">Kegiatan, Output, MAK</div>
+                <div class="col-2">Kegiatan, Output, MAK</div>
                 <div class="col-1">:</div>
-                <div class="col-8">
+                <div class="col-6">
                     {{ $spd->mak->ket }}
                 </div>
+                <div class="col-3"></div>
             </div>
             <div class="row">
-                <div class="col-3">Kode</div>
+                <div class="col-2">Kode</div>
                 <div class="col-1">:</div>
-                <div class="col-8">{{ $spd->mak->kode_mak }}
+                <div class="col-6">{{ $spd->mak->kode_mak }}
                 </div>
+                <div class="col-3"></div>
             </div>
             <div class="row mt-5">
                 <div class="col-4">
