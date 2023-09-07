@@ -215,7 +215,7 @@ class SpdController extends Controller
 
         // UPDATE PERMINTAAN TABLE
 
-        // ==============BUAT DAN HITUNG PERJALANAN======================
+        // ==============BUAT DAN HITUNG PERJALANAN ORANG KE 1 ======================
         $tujuanP = $attr['provinsi'];
         $tujuanK = $attr['kota'];
         $golongan = Auth::user()->golongan->golongan_name;
@@ -223,8 +223,6 @@ class SpdController extends Controller
 
         $getTableBiaya = Biaya::findOrFail($tujuanP);
         $getTableRepresentasi = Representasi::where('pangkat', $golongan)->first();
-        // $getTableTiketPesawat = BiayaTiketPesawat::where('')
-        // $getTableTransportasiDarat
 
         // --UANG HARIAN--
         if ($attr['jenis_perjalanan'] == 'luar kota') {
@@ -388,7 +386,7 @@ class SpdController extends Controller
                     $biaya_taksi = 0;
                 }
 
-                $jumlah_permintaan = $biaya_penginapan + $biaya_taksi + $uang_harian + $uang_representasi;
+                $jumlah_permintaan = $biaya_penginapan + $biaya_taksi + $jumlah_uang_harian + $uang_representasi;
 
                 $insertPermintaans = Permintaan::create([
                     'user_id'                   => $user->id,
@@ -451,12 +449,23 @@ class SpdController extends Controller
         if ($spd->undangan) {
             Storage::delete($spd->undangan);
         }
+        // Get the Permintaan related to this Spd
+        $permintaan = Permintaan::where('spd_id', $spd->id)->get();
+        // dd($permintaan);
+
+        foreach ($permintaan as $singlePermintaan) {
+            // Delete the related Nota records for each Permintaan
+            Nota::where('permintaan_id', $singlePermintaan->id)->delete();
+        }
+
         Spd::destroy($spd->id);
+        Permintaan::where('spd_id', $spd->id)->delete();
 
         // Update the users table where spd_id equals the deleted SPD ID
-        User::where('spd_id', $getSpdId)->update(['spd_id' => null, 'permintaan_id' => null]);
+        User::where('spd_id', $spd->id)->update(['spd_id' => null, 'permintaan_id' => null]);
+        // $spd->delete();
 
-        return back()->with('message', 'Data berhasil diubah');
+        return back()->with('message', 'Data berhasil dihapus');
     }
 
     public function verifikasiSpd(Request $request, $id)
@@ -505,7 +514,9 @@ class SpdController extends Controller
         $permintaan = Permintaan::where('spd_id', $id)->get();
 
         foreach ($permintaan as $item) {
+            $addTiketPesawat = $tiket_pesawat;
             $item->tiket_pesawat = $tiket_pesawat;
+            $item->jumlah += $addTiketPesawat;
             $item->save();
         }
 

@@ -59,6 +59,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <button class="btn btn-xs btn-info" data-bs-toggle="modal" data-bs-target="#modalDetail{{ $item->id }}"><i class="bx bx-info-square me-1"></i> Detail</button>
+                                        <button class="btn btn-xs btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete{{ $item->id }}"><i class="bx bx-trash me-1"></i> Delete</button>
                                     </div>
                                 </div>
                             </td>
@@ -183,6 +184,44 @@
                     Close
                 </button>
             </div>
+        </div>
+    </div>
+</div>
+@endforeach
+@endif
+
+@if (isset($laporan))
+{{-- Modal Delete --}}
+@foreach ($laporan as $item)
+<div class="modal fade" id="modalDelete{{ $item->id }}" tabindex="-1" aria-modal="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-danger pb-3">
+                <h5 class="modal-title text-white" id="modalDetailTitle">Hapus Surat Perjalanan Dinas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+            </div>
+            <form action="{{ route('spd.destroy', $item->id) }}" method="POST">
+                @csrf
+                @method('delete')
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>Apakah anda yakin ingin menghapus data Laporan Selesai ini?</p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-danger"><i class="bx bx-trash"></i> Hapus data</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

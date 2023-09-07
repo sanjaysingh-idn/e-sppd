@@ -192,7 +192,7 @@
             </div>
             <div class="row">
                 <div class="col-3">Dibebankan pada</div>
-                <div class="col-1">:</div>
+                <div class="col-1"></div>
                 <div class="col-8">
 
                 </div>
@@ -201,13 +201,13 @@
                 <div class="col-3">Kegiatan, Output, MAK</div>
                 <div class="col-1">:</div>
                 <div class="col-8">
-                    {{ $spd->mata_anggaran }}
+                    {{ $spd->mak->ket }}
                 </div>
             </div>
             <div class="row">
                 <div class="col-3">Kode</div>
                 <div class="col-1">:</div>
-                <div class="col-8">
+                <div class="col-8">{{ $spd->mak->kode_mak }}
                 </div>
             </div>
             <div class="row mt-5">
@@ -446,7 +446,7 @@
                                     <div class="col-3">
                                         <p class="text-end">
                                             <span class="float-start">Rp. </span>
-                                            0
+                                            {{ number_format($item->biaya_taksi) }}
                                         </p>
                                     </div>
                                 </div>
@@ -454,7 +454,7 @@
                             <td>
                                 <p class="text-end">
                                     <span class="float-start">Rp. </span>
-                                    0
+                                    {{ number_format($item->biaya_taksi) }}
                                 </p>
                             </td>
                         </tr>
@@ -483,7 +483,7 @@
                     <p class="mb-0">Telah Dibayar Sejumlah</p>
                     <p class="text-end me-5 pe-5">
                         <span class="float-start">Rp. </span>
-                        21.000.000
+                        {{ number_format($item->jumlah) }}
                     </p>
                     <p>Bendahara Pengeluaran</p>
                     <br>
@@ -498,7 +498,7 @@
                     <p class="mb-0">Telah menerima uang sebesar</p>
                     <p class="text-end me-5 pe-5">
                         <span class="float-start">Rp. </span>
-                        21.000.000
+                        {{ number_format($item->jumlah) }}
                     </p>
                     <p>Yang Menerima</p>
                     <br>
@@ -517,7 +517,7 @@
                 <div class="col-3">
                     <p class="text-end me-5 pe-5">
                         <span class="float-start">Rp. </span>
-                        21.000.000
+                        {{ number_format($item->jumlah) }}
                     </p>
                 </div>
             </div>
@@ -527,7 +527,7 @@
                 <div class="col-3 border-bottom border-1 border-dark">
                     <p class="text-end me-5 pe-5">
                         <span class="float-start">Rp. </span>
-                        21.000.000
+                        {{ number_format($item->jumlah) }}
                     </p>
                 </div>
             </div>
